@@ -28,10 +28,12 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <a href="./profile.html" class="dropdown-item">Profile</a>
+                        @if (Auth::user()->role != 'admin')
+                            <a href="{{ url(Auth::user()->role . '/profil') }}" class="dropdown-item">Profil</a>
+                        @endif
                         <div class="dropdown-divider"></div>
-                        <a href="./settings.html" class="dropdown-item">Settings</a>
-                        <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                        <a href="{{ url(Auth::user()->role . '/akun') }}" class="dropdown-item">Akun</a>
+                        <a href="{{ url(Auth::user()->role . '/logout') }}" class="dropdown-item">Logout</a>
                     </div>
                 </div>
             </div>

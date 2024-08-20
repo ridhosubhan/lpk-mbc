@@ -14,8 +14,12 @@
                 <li><a class="nav-link scrollto " href="#galeri">Galeri</a></li>
                 <li><a class="nav-link scrollto" href="#cerita-sukses">Cerita Sukses</a></li>
                 <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
-                <li><a class="nav-link" href="{{ url('/daftar') }}">Daftar</a></li>
-                <li><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
+                @if (!Auth::user())
+                    <li><a class="nav-link" href="{{ url('/daftar') }}">Daftar</a></li>
+                    <li><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
+                @else
+                    <li><a class="nav-link" href="{{ url(Auth::user()->role . '/dashboard') }}">Dashboard</a></li>
+                @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
